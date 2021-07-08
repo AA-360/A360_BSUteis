@@ -36,13 +36,14 @@ public class FindInListSchema {
     public List<Integer> indexSchema(List<String> value) {
         List<Integer> lista = new ArrayList();
         for(String v: value){
-            int i = 0;
-            for(Schema lsc : this.schemas) {
-                if (lsc.getName().equals(v)) {
-                    lista.add(i);
-                }
-                i++;
-            }
+            lista.add(this.indexSchema(v));
+//            int i = 0;
+//            for(Schema lsc : this.schemas) {
+//                if (lsc.getName().equals(v)) {
+//                    lista.add(i);
+//                }
+//                i++;
+//            }
         }
         return lista;
     }

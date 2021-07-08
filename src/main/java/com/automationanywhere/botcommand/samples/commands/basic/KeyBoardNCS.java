@@ -32,8 +32,8 @@ import static com.automationanywhere.commandsdk.model.DataType.STRING;
 
 @BotCommand
 @CommandPkg(label = "KeyBoardNCW",
-        description = "Esta action habilita/desabilita o NUMLOCK e CAPSLOCK", icon = "pkg.svg", name = "KeyBoardNCW",
-        return_description = "", return_type = STRING, return_required = true)
+        description = "Esta action habilita/desabilita o NUMLOCK, CAPSLOCK e SCROLLOCK", icon = "pkg.svg", name = "KeyBoardNCW"
+)
 
 
 public class KeyBoardNCS {
@@ -43,7 +43,7 @@ public class KeyBoardNCS {
             @Idx(index = "1", type = AttributeType.SELECT, options = {
                     @Idx.Option(index ="1.1", pkg = @Pkg(label = "NUMLOCK", value = "N")),
                     @Idx.Option(index ="1.2", pkg = @Pkg(label = "CAPSLOCK", value = "C")),
-                    @Idx.Option(index ="1.3", pkg = @Pkg(label = "SCROLLLOCK", value = "S"))
+                    @Idx.Option(index ="1.3", pkg = @Pkg(label = "SCROLLOCK", value = "S"))
             })
             @Pkg(label = "Key",default_value_type = STRING,default_value = "C")
             @NotEmpty
@@ -58,8 +58,4 @@ public class KeyBoardNCS {
 
         toolkit.setLockingKeyState(Key, status);
     }
-    
-
-    
-
 }

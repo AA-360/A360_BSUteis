@@ -3,7 +3,6 @@ package com.automationanywhere.botcommand.samples.commands.basic;
 import com.automationanywhere.bot.service.GlobalSessionContext;
 import com.automationanywhere.botcommand.BotCommand;
 import com.automationanywhere.botcommand.data.Value;
-import com.automationanywhere.botcommand.data.impl.ListValue;
 import com.automationanywhere.botcommand.exception.BotCommandException;
 import com.automationanywhere.commandsdk.i18n.Messages;
 import com.automationanywhere.commandsdk.i18n.MessagesFactory;
@@ -12,6 +11,7 @@ import java.lang.Deprecated;
 import java.lang.Object;
 import java.lang.String;
 import java.lang.Throwable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,8 +47,8 @@ public final class StringJoinListCommand implements BotCommand {
 
     if(parameters.containsKey("status") && parameters.get("status") != null && parameters.get("status").get() != null) {
       convertedParameters.put("status", parameters.get("status").get());
-      if(convertedParameters.get("status") !=null && !(convertedParameters.get("status") instanceof ListValue)) {
-        throw new BotCommandException(MESSAGES_GENERIC.getString("generic.UnexpectedTypeReceived","status", "ListValue", parameters.get("status").get().getClass().getSimpleName()));
+      if(convertedParameters.get("status") !=null && !(convertedParameters.get("status") instanceof ArrayList)) {
+        throw new BotCommandException(MESSAGES_GENERIC.getString("generic.UnexpectedTypeReceived","status", "ArrayList", parameters.get("status").get().getClass().getSimpleName()));
       }
     }
     if(convertedParameters.get("status") == null) {
@@ -56,7 +56,7 @@ public final class StringJoinListCommand implements BotCommand {
     }
 
     try {
-      Optional<Value> result =  Optional.ofNullable(command.action((String)convertedParameters.get("delimiter"),(ListValue<String>)convertedParameters.get("status")));
+      Optional<Value> result =  Optional.ofNullable(command.action((String)convertedParameters.get("delimiter"),(ArrayList<String>)convertedParameters.get("status")));
       return logger.traceExit(result);
     }
     catch (ClassCastException e) {

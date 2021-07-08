@@ -19,16 +19,16 @@ public class StringJoinListTest {
 
 
         ListValue<String> returnvalue = new ListValue<String>();
-        List<Value> vals = new ArrayList<Value>();
+        ArrayList<String> vals = new ArrayList<String>();
 
-        vals.add(new StringValue("ASD"));
-        vals.add(new StringValue("ASD"));
-        vals.add(new StringValue("ASD"));
-        vals.add(new StringValue("ASD"));
+        vals.add("ASD");
+        vals.add("ASD");
+        vals.add("ASD");
+        vals.add("ASD");
 
-        returnvalue.set(vals);
+        //returnvalue.set(vals);
 
-        StringValue ret = a.action(";",returnvalue);
+        StringValue ret = a.action(";",vals);
         System.out.println("==================" + ret.toString());
     }
 }

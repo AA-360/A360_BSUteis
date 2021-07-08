@@ -11,6 +11,7 @@
  *
  */
 package com.automationanywhere.botcommand.samples.commands.basic;
+import static com.automationanywhere.commandsdk.model.AttributeType.TEXT;
 
 import com.automationanywhere.botcommand.data.Value;
 import com.automationanywhere.botcommand.data.impl.ListValue;
@@ -42,18 +43,18 @@ public class StringJoinList {
 
     @Execute
     public StringValue action(
-            @Idx(index = "1", type = AttributeType.TEXT)
+            @Idx(index = "1", type = TEXT)
             @Pkg(label = "Delimitador")
             @NotEmpty
             String delimiter,
             @Idx(index = "2", type = LIST)
             @Pkg(label = "List String", description = "Lista de string a ser unificada!")
             @NotEmpty
-            ListValue<String> status
+            ArrayList<String> status
     ) {
         String joined = "";
-        for(Value item: status.get()){
-            joined +=item.toString() + delimiter;
+        for(String item: status){
+            joined +=item + delimiter;
         }
 
         return new StringValue(joined.substring(0, joined.length() - 1));

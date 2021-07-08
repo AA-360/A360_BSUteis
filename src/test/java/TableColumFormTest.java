@@ -1,6 +1,7 @@
 import com.automationanywhere.botcommand.data.Value;
 import com.automationanywhere.botcommand.data.impl.ListValue;
 import com.automationanywhere.botcommand.data.impl.StringValue;
+import com.automationanywhere.botcommand.data.impl.TableValue;
 import com.automationanywhere.botcommand.data.model.Schema;
 import com.automationanywhere.botcommand.data.model.table.Row;
 import com.automationanywhere.botcommand.data.model.table.Table;
@@ -25,9 +26,9 @@ public class TableColumFormTest {
 
         String code = this.code();
 
-        a.action(tb,"TEST|USD|BRL","NOVA",0.0,code);
+        TableValue tbv = a.action(tb,"TEST|USD|@123|BRL","NOVA",0.0,code);
 
-        //System.out.println("Expected First Value: ");
+        //System.out.println("Expected First Value: " + tbv.get(0).get("NOVA").toString());
     }
 
     private String code(){

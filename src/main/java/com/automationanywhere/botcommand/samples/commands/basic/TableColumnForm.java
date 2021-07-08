@@ -82,7 +82,7 @@ public class TableColumnForm {
 
         SCHEMA_NAMES = Arrays.asList(i_colunas.split("\\|"));
         for (String sc : SCHEMA_NAMES) {
-            if (!fnd.exists(sc)) {
+            if (!fnd.exists(sc) && !sc.startsWith("@")) {
                 throw new BotCommandException("Column '" + sc + "' not found!");
             }
         }
@@ -92,18 +92,27 @@ public class TableColumnForm {
         Invocable inv = (Invocable) engine;
         List<Row> newTbl = new ArrayList();
         int counter = 0;
+        int index = 0;
 
 
         for(Row rw: Tabela.getRows()){
             counter ++;
             Object params[] = {};
             List<Value> RowListValues = rw.getValues();
+            index = 0;
 
             //ADCIONA OS PARAMETROS DA LINHA
             for(Integer i: SCHEMA_IDX){
-                String val = RowListValues.get(i).toString();
-                params = append(params,val);
+                if(i == -1){
+                    String val = SCHEMA_NAMES.get(index).replace("@","");
+                    params = append(params, val);
+                }else {
+                    String val = RowListValues.get(i).toString();
+                    params = append(params, val);
+                }
+                index++;
             }
+
             //EXECUTA A FORMULA
             try{
                 String newValue = inv.invokeFunction("calc", params).toString();

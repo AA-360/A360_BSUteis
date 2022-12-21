@@ -4,8 +4,8 @@
     "description": "Sample package to demo dictionary return",
     "group": "com.automationanywhere",
     "artifactName": "BsUteis",
-    "packageVersion": "1.3.1-20210730-144610",
-    "codeVersion": "1.3.1-20210730-144610",
+    "packageVersion": "1.3.1-20221019-152443",
+    "codeVersion": "1.3.1-20221019-152443",
     "author": "",
     "commands": [
         {
@@ -117,6 +117,10 @@
                     "label": "Status",
                     "description": "true-> Habilitar | false-> Desabilitar",
                     "type": "BOOLEAN",
+                    "defaultValue": {
+                        "boolean": false,
+                        "type": "BOOLEAN"
+                    },
                     "rules": [
                         {
                             "name": "NOT_EMPTY"

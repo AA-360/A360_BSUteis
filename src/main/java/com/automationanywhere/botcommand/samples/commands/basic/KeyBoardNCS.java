@@ -16,6 +16,7 @@ import com.automationanywhere.botcommand.data.impl.StringValue;
 import com.automationanywhere.commandsdk.annotations.*;
 import com.automationanywhere.commandsdk.annotations.rules.NotEmpty;
 import com.automationanywhere.commandsdk.model.AttributeType;
+import com.automationanywhere.commandsdk.model.DataType;
 
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
@@ -49,7 +50,7 @@ public class KeyBoardNCS {
             @NotEmpty
             String select,
             @Idx(index = "2", type = BOOLEAN)
-            @Pkg(label = "Status", description = "true-> Habilitar | false-> Desabilitar")
+            @Pkg(label = "Status", description = "true-> Habilitar | false-> Desabilitar",default_value = "false",default_value_type = DataType.BOOLEAN)
             @NotEmpty
             Boolean status
     ) {
